@@ -16,23 +16,28 @@ let package = Package(
         .target(
             name: "GoogleInteractiveMediaAdsTarget",
             dependencies: [.target(name: "GoogleInteractiveMediaAds")],
-            path: "GoogleInteractiveMediaAds"),
+            path: "GoogleInteractiveMediaAds",
+            linkerSettings: [.linkedFramework("GoogleInteractiveMediaAds")]),
         .target(
             name: "OMSDK_AdsbynimbusTarget",
             dependencies: [.target(name: "OMSDK_Adsbynimbus")],
-            path: "OMSDK_Adsbynimbus"),
+            path: "OMSDK_Adsbynimbus",
+            linkerSettings: [.linkedFramework("OMSDK_Adsbynimbus")]),
         .target(
             name: "DTBiOSSDKTarget",
             dependencies: [.target(name: "DTBiOSSDK")],
-            path: "DTBiOSSDK"),
+            path: "DTBiOSSDK",
+            linkerSettings: [.linkedFramework("DTBiOSSDK")]),
         .target(
             name: "FBAudienceNetworkTarget",
             dependencies: [.target(name: "FBAudienceNetwork")],
-            path: "FBAudienceNetwork"),
+            path: "FBAudienceNetwork",
+            linkerSettings: [.linkedFramework("FBAudienceNetwork")]),
         .target(
             name: "UnityAdsTarget",
             dependencies: [.target(name: "UnityAds")],
-            path: "UnityAds"),
+            path: "UnityAds",
+            linkerSettings: [.linkedFramework("UnityAds")]),
         .binaryTarget(
             name: "GoogleInteractiveMediaAds",
             url: "https://imasdk.googleapis.com/native/downloads/ima-ios-v3.16.3.zip",
