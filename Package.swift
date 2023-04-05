@@ -2,16 +2,30 @@
 
 import PackageDescription
 
+let products: [Product]
+
+#if swift(>=5.8)
+products = [
+    .library(name: "GoogleInteractiveMediaAds", targets: ["GoogleInteractiveMediaAds"]),
+    .library(name: "OMSDK_Adsbynimbus", targets: ["OMSDK_Adsbynimbus"]),
+    .library(name: "DTBiOSSDK", targets: ["DTBiOSSDK"]),
+    .library(name: "FBAudienceNetwork", targets: ["FBAudienceNetwork"]),
+    .library(name: "UnityAds", targets: ["UnityAds"]),
+]
+#else
+products = [
+    .library(name: "GoogleInteractiveMediaAds", targets: ["GoogleInteractiveMediaAdsTarget"]),
+    .library(name: "OMSDK_Adsbynimbus", targets: ["OMSDK_AdsbynimbusTarget"]),
+    .library(name: "DTBiOSSDK", targets: ["DTBiOSSDKTarget"]),
+    .library(name: "FBAudienceNetwork", targets: ["FBAudienceNetworkTarget"]),
+    .library(name: "UnityAds", targets: ["UnityAdsTarget"]),
+]
+#endif
+
 let package = Package(
     name: "nimbus-ios-dependencies",
     platforms: [.iOS(.v12)],
-    products: [
-        .library(name: "GoogleInteractiveMediaAds", targets: ["GoogleInteractiveMediaAdsTarget"]),
-        .library(name: "OMSDK_Adsbynimbus", targets: ["OMSDK_AdsbynimbusTarget"]),
-        .library(name: "DTBiOSSDK", targets: ["DTBiOSSDKTarget"]),
-        .library(name: "FBAudienceNetwork", targets: ["FBAudienceNetworkTarget"]),
-        .library(name: "UnityAds", targets: ["UnityAdsTarget"]),
-    ],
+    products: products,
     targets: [
         .target(
             name: "GoogleInteractiveMediaAdsTarget",
